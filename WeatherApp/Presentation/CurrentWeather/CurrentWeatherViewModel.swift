@@ -30,18 +30,19 @@ final class CurrentWeatherViewModel: NSObject, ObservableObject {
     func onAppear() {
         isLoading = true
         locationManager.requestWhenInUseAuthorization()
+        locationManager.distanceFilter = 5000
         locationManager.startUpdatingLocation()
     }
 }
 
 extension CurrentWeatherViewModel: CLLocationManagerDelegate {
+    @MainActor
     func locationManager(_ manager: CLLocationManager,
                          didUpdateLocations locations: [CLLocation]) {
         
         guard let userLocation = locations.first else { return }
         Task {
             let currentWeather = try await getCurrentWeatherUseCase.execute(coordinate: .init(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude), units: units)
-            manager.stopUpdatingLocation()
             temperature = currentWeather.temperature
             city = currentWeather.city
             isLoading = false
