@@ -33,6 +33,7 @@
 		649B02152AA7E7B70039CCB5 /* CoreContainer+UseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B02142AA7E7B70039CCB5 /* CoreContainer+UseCases.swift */; };
 		649B02172AA7E8AD0039CCB5 /* GetCurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B02162AA7E8AD0039CCB5 /* GetCurrentWeather.swift */; };
 		649B02192AA7EA750039CCB5 /* CurrentWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B02182AA7EA750039CCB5 /* CurrentWeatherViewModel.swift */; };
+		649B021B2AA7F58C0039CCB5 /* NetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B021A2AA7F58C0039CCB5 /* NetworkDataLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		649B02142AA7E7B70039CCB5 /* CoreContainer+UseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreContainer+UseCases.swift"; sourceTree = "<group>"; };
 		649B02162AA7E8AD0039CCB5 /* GetCurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentWeather.swift; sourceTree = "<group>"; };
 		649B02182AA7EA750039CCB5 /* CurrentWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherViewModel.swift; sourceTree = "<group>"; };
+		649B021A2AA7F58C0039CCB5 /* NetworkDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 				649B01F22AA7DBAB0039CCB5 /* Coordinate.swift */,
 				649B01F42AA7DBD60039CCB5 /* Units.swift */,
 				649B01FB2AA7DCE20039CCB5 /* GlobalConstants.swift */,
+				649B021A2AA7F58C0039CCB5 /* NetworkDataLoader.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 			files = (
 				6481096F2AA7D4EF006A751C /* CurrentWeatherView.swift in Sources */,
 				649B01FC2AA7DCE20039CCB5 /* GlobalConstants.swift in Sources */,
+				649B021B2AA7F58C0039CCB5 /* NetworkDataLoader.swift in Sources */,
 				649B02152AA7E7B70039CCB5 /* CoreContainer+UseCases.swift in Sources */,
 				649B02062AA7DFA80039CCB5 /* HTTPClient.swift in Sources */,
 				649B02132AA7E7AC0039CCB5 /* CoreContainer+Repositories.swift in Sources */,

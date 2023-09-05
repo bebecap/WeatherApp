@@ -11,4 +11,8 @@ import Foundation
 final class CoreContainer: SharedContainer {
     public static let shared = CoreContainer()
     public let manager: ContainerManager = ContainerManager()
+    
+    var networkDataLoader: Factory<NetworkDataLoader> {
+        self { URLSession.shared }
+    }
 }

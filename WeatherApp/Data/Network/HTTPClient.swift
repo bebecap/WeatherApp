@@ -35,20 +35,16 @@ extension HTTPClient {
         }
         
         do {
-            // Dependency question
-            let (data, response) = try await URLSession.shared.data(for: request, delegate: nil)
+            let (data, response) = try await CoreContainer.shared.networkDataLoader().data(for: request, delegate: nil)
             guard let response = response as? HTTPURLResponse else {
                 return .failure(.noResponse)
             }
             switch response.statusCode {
             case 200...299:
-                do {
-                    return .success(try JSONDecoder().decode(responseModel, from: data))
-                } catch {
-                    print(url)
-                    print(error)
+                guard let decodedResponse = try? JSONDecoder().decode(responseModel, from: data) else {
                     return .failure(.decode)
                 }
+                return .success(decodedResponse)
             case 401:
                 return .failure(.unauthorized)
             default:
