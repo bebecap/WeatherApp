@@ -17,4 +17,6 @@ struct CurrentWeather: Hashable {
     let seaLevelPressure: Int?
     let groundLevelPressure: Int?
     let city: String?
+    let sunset: Date
+    let sunrise: Date
 }
