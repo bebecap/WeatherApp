@@ -7,12 +7,14 @@
 
 import Foundation
 
+/// @mockable
 protocol HTTPClient {
-    func fetch<T: Decodable>(endpoint: Endpoint, responseModel: T.Type) async -> Result<T, RequestError>
+    // Naming?
+    func sendRequest<T: Decodable>(endpoint: Endpoint, responseModel: T.Type) async -> Result<T, RequestError>
 }
 
 extension HTTPClient {
-    func fetch<T: Decodable>(
+    func sendRequest<T: Decodable>(
         endpoint: Endpoint,
         responseModel: T.Type
     ) async -> Result<T, RequestError> {
