@@ -19,4 +19,5 @@ struct CurrentWeather: Hashable {
     let city: String?
     let sunset: Date
     let sunrise: Date
+    let clouds: Int
 }

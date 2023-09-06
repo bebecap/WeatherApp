@@ -13,7 +13,7 @@ struct CurrentWeatherView: View {
 
     var body: some View {
         ZStack {
-            SunPathView(sunPosition: $sunPosition)
+            WeatherBackgroundView(sunPosition: $sunPosition, cloudsOpacity: $viewModel.cloudsOpacity)
             DegreeView(degrees: $viewModel.temperature, location: $viewModel.city)
             .padding()
         }

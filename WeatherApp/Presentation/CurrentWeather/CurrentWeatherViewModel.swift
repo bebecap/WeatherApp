@@ -16,11 +16,13 @@ final class CurrentWeatherViewModel: NSObject, ObservableObject {
         didSet {
             temperature = currentWeather?.temperature
             city = currentWeather?.city
+            cloudsOpacity = Double(currentWeather?.clouds ?? 0) / 100
         }
     }
     
     @Published var temperature: Double?
     @Published var city: String?
+    @Published var cloudsOpacity: Double?
     @Published var isLoading: Bool = false
     @Published var units: Units = .metric
     @Published var sunPosition: Double? = nil
