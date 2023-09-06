@@ -9,15 +9,19 @@ import SwiftUI
 
 struct CurrentWeatherView: View {
     @StateObject var viewModel: CurrentWeatherViewModel
+    @State var sunPosition: Double?
 
     var body: some View {
-        VStack {
-            Text(viewModel.city ?? "")
-                .font(.title)
-            Text("\(viewModel.temperature?.formatted() ?? "NaN")°" )
-                .font(.title2)
+        ZStack {
+            SunPathView(sunPosition: $sunPosition)
+            DegreeView(degrees: $viewModel.temperature, location: $viewModel.city)
+            .padding()
         }
-        .padding()
+        .onReceive(viewModel.$sunPosition) { newPosition in
+            withAnimation(.linear(duration: 0.5)) {
+                self.sunPosition = newPosition
+            }
+        }
         .onAppear {
             viewModel.onAppear()
         }

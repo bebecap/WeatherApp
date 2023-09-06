@@ -29,5 +29,7 @@ fileprivate extension CurrentWeather {
         seaLevelPressure = entity.mainWeather.seaLevelPressure
         groundLevelPressure = entity.mainWeather.groundLevelPressure
         city = entity.cityName
+        sunset = Date(timeIntervalSince1970: TimeInterval(entity.system.sunsetTime))
+        sunrise = Date(timeIntervalSince1970: TimeInterval(entity.system.sunriseTime))
     }
 }

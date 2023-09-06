@@ -34,6 +34,9 @@
 		649B02172AA7E8AD0039CCB5 /* GetCurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B02162AA7E8AD0039CCB5 /* GetCurrentWeather.swift */; };
 		649B02192AA7EA750039CCB5 /* CurrentWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B02182AA7EA750039CCB5 /* CurrentWeatherViewModel.swift */; };
 		649B021B2AA7F58C0039CCB5 /* NetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B021A2AA7F58C0039CCB5 /* NetworkDataLoader.swift */; };
+		649B021D2AA8665F0039CCB5 /* SunPathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B021C2AA8665F0039CCB5 /* SunPathView.swift */; };
+		649B021F2AA8793A0039CCB5 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B021E2AA8793A0039CCB5 /* Color+Hex.swift */; };
+		649B02212AA87C7E0039CCB5 /* DegreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B02202AA87C7E0039CCB5 /* DegreeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +78,9 @@
 		649B02162AA7E8AD0039CCB5 /* GetCurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentWeather.swift; sourceTree = "<group>"; };
 		649B02182AA7EA750039CCB5 /* CurrentWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherViewModel.swift; sourceTree = "<group>"; };
 		649B021A2AA7F58C0039CCB5 /* NetworkDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataLoader.swift; sourceTree = "<group>"; };
+		649B021C2AA8665F0039CCB5 /* SunPathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunPathView.swift; sourceTree = "<group>"; };
+		649B021E2AA8793A0039CCB5 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
+		649B02202AA87C7E0039CCB5 /* DegreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DegreeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +200,8 @@
 			children = (
 				6481096E2AA7D4EF006A751C /* CurrentWeatherView.swift */,
 				649B02182AA7EA750039CCB5 /* CurrentWeatherViewModel.swift */,
+				649B021C2AA8665F0039CCB5 /* SunPathView.swift */,
+				649B02202AA87C7E0039CCB5 /* DegreeView.swift */,
 			);
 			path = CurrentWeather;
 			sourceTree = "<group>";
@@ -256,6 +264,7 @@
 				649B01F42AA7DBD60039CCB5 /* Units.swift */,
 				649B01FB2AA7DCE20039CCB5 /* GlobalConstants.swift */,
 				649B021A2AA7F58C0039CCB5 /* NetworkDataLoader.swift */,
+				649B021E2AA8793A0039CCB5 /* Color+Hex.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -398,14 +407,17 @@
 			files = (
 				6481096F2AA7D4EF006A751C /* CurrentWeatherView.swift in Sources */,
 				649B01FC2AA7DCE20039CCB5 /* GlobalConstants.swift in Sources */,
+				649B021D2AA8665F0039CCB5 /* SunPathView.swift in Sources */,
 				649B021B2AA7F58C0039CCB5 /* NetworkDataLoader.swift in Sources */,
 				649B02152AA7E7B70039CCB5 /* CoreContainer+UseCases.swift in Sources */,
+				649B021F2AA8793A0039CCB5 /* Color+Hex.swift in Sources */,
 				649B02062AA7DFA80039CCB5 /* HTTPClient.swift in Sources */,
 				649B02132AA7E7AC0039CCB5 /* CoreContainer+Repositories.swift in Sources */,
 				649B01EB2AA7DA0B0039CCB5 /* CurrentWeatherEntity.swift in Sources */,
 				649B01F02AA7DB4D0039CCB5 /* WeatherDataSource.swift in Sources */,
 				649B02082AA7E05E0039CCB5 /* WeatherEndpoints.swift in Sources */,
 				649B020E2AA7E7330039CCB5 /* CoreContainer.swift in Sources */,
+				649B02212AA87C7E0039CCB5 /* DegreeView.swift in Sources */,
 				649B02002AA7DECB0039CCB5 /* Endpoint.swift in Sources */,
 				649B02022AA7DF5A0039CCB5 /* RequestMethod.swift in Sources */,
 				649B020C2AA7E7190039CCB5 /* WeatherRepositoryImpl.swift in Sources */,
