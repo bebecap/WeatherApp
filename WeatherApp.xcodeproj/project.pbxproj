@@ -37,6 +37,10 @@
 		649B021D2AA8665F0039CCB5 /* SunPathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B021C2AA8665F0039CCB5 /* SunPathView.swift */; };
 		649B021F2AA8793A0039CCB5 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B021E2AA8793A0039CCB5 /* Color+Hex.swift */; };
 		649B02212AA87C7E0039CCB5 /* DegreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B02202AA87C7E0039CCB5 /* DegreeView.swift */; };
+		649B02242AA917330039CCB5 /* SkyBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B02232AA917330039CCB5 /* SkyBackgroundView.swift */; };
+		649B02262AA917BE0039CCB5 /* CloudsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B02252AA917BE0039CCB5 /* CloudsView.swift */; };
+		649B02282AA9185A0039CCB5 /* SunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B02272AA9185A0039CCB5 /* SunView.swift */; };
+		649B022B2AA91B8E0039CCB5 /* Mocks.Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B022A2AA91B8E0039CCB5 /* Mocks.Generated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +85,10 @@
 		649B021C2AA8665F0039CCB5 /* SunPathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunPathView.swift; sourceTree = "<group>"; };
 		649B021E2AA8793A0039CCB5 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
 		649B02202AA87C7E0039CCB5 /* DegreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DegreeView.swift; sourceTree = "<group>"; };
+		649B02232AA917330039CCB5 /* SkyBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyBackgroundView.swift; sourceTree = "<group>"; };
+		649B02252AA917BE0039CCB5 /* CloudsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudsView.swift; sourceTree = "<group>"; };
+		649B02272AA9185A0039CCB5 /* SunView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunView.swift; sourceTree = "<group>"; };
+		649B022A2AA91B8E0039CCB5 /* Mocks.Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mocks.Generated.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +131,7 @@
 		6481096B2AA7D4EF006A751C /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				649B02292AA91B5F0039CCB5 /* Generated */,
 				649B01F12AA7DB9F0039CCB5 /* Core */,
 				649B01E12AA7D8090039CCB5 /* Presentation */,
 				649B01E02AA7D8040039CCB5 /* Data */,
@@ -198,9 +207,9 @@
 		649B01E42AA7D8510039CCB5 /* CurrentWeather */ = {
 			isa = PBXGroup;
 			children = (
+				649B02222AA912440039CCB5 /* WeatherBackground */,
 				6481096E2AA7D4EF006A751C /* CurrentWeatherView.swift */,
 				649B02182AA7EA750039CCB5 /* CurrentWeatherViewModel.swift */,
-				649B021C2AA8665F0039CCB5 /* SunPathView.swift */,
 				649B02202AA87C7E0039CCB5 /* DegreeView.swift */,
 			);
 			path = CurrentWeather;
@@ -297,6 +306,25 @@
 				649B02142AA7E7B70039CCB5 /* CoreContainer+UseCases.swift */,
 			);
 			path = Container;
+			sourceTree = "<group>";
+		};
+		649B02222AA912440039CCB5 /* WeatherBackground */ = {
+			isa = PBXGroup;
+			children = (
+				649B021C2AA8665F0039CCB5 /* SunPathView.swift */,
+				649B02232AA917330039CCB5 /* SkyBackgroundView.swift */,
+				649B02252AA917BE0039CCB5 /* CloudsView.swift */,
+				649B02272AA9185A0039CCB5 /* SunView.swift */,
+			);
+			path = WeatherBackground;
+			sourceTree = "<group>";
+		};
+		649B02292AA91B5F0039CCB5 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				649B022A2AA91B8E0039CCB5 /* Mocks.Generated.swift */,
+			);
+			path = Generated;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,6 +437,7 @@
 				649B01FC2AA7DCE20039CCB5 /* GlobalConstants.swift in Sources */,
 				649B021D2AA8665F0039CCB5 /* SunPathView.swift in Sources */,
 				649B021B2AA7F58C0039CCB5 /* NetworkDataLoader.swift in Sources */,
+				649B022B2AA91B8E0039CCB5 /* Mocks.Generated.swift in Sources */,
 				649B02152AA7E7B70039CCB5 /* CoreContainer+UseCases.swift in Sources */,
 				649B021F2AA8793A0039CCB5 /* Color+Hex.swift in Sources */,
 				649B02062AA7DFA80039CCB5 /* HTTPClient.swift in Sources */,
@@ -425,10 +454,13 @@
 				649B01F52AA7DBD60039CCB5 /* Units.swift in Sources */,
 				649B02042AA7DF7B0039CCB5 /* RequestError.swift in Sources */,
 				649B02112AA7E79F0039CCB5 /* CoreContainer+DataSources.swift in Sources */,
+				649B02262AA917BE0039CCB5 /* CloudsView.swift in Sources */,
 				649B01EE2AA7DAB00039CCB5 /* CurrentWeather.swift in Sources */,
 				649B020A2AA7E6D00039CCB5 /* WeatherRepository.swift in Sources */,
 				6481096D2AA7D4EF006A751C /* WeatherAppApp.swift in Sources */,
 				649B02172AA7E8AD0039CCB5 /* GetCurrentWeather.swift in Sources */,
+				649B02282AA9185A0039CCB5 /* SunView.swift in Sources */,
+				649B02242AA917330039CCB5 /* SkyBackgroundView.swift in Sources */,
 				649B01F32AA7DBAB0039CCB5 /* Coordinate.swift in Sources */,
 				649B02192AA7EA750039CCB5 /* CurrentWeatherViewModel.swift in Sources */,
 			);
