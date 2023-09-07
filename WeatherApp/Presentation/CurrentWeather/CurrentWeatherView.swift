@@ -9,18 +9,18 @@ import SwiftUI
 
 struct CurrentWeatherView: View {
     @StateObject var viewModel: CurrentWeatherViewModel
-    @State var sunPosition: Double?
 
     var body: some View {
         ZStack {
-            WeatherBackgroundView(sunPosition: $sunPosition, cloudsOpacity: $viewModel.cloudsOpacity)
-            DegreeView(degrees: $viewModel.temperature, location: $viewModel.city)
+            WeatherBackgroundView(sunPosition: $viewModel.sunPosition, cloudsOpacity: $viewModel.cloudsOpacity)
+            DegreeView(
+                degrees: $viewModel.temperature,
+                location: $viewModel.city,
+                minTemparature: $viewModel.minTemperature,
+                maxTemperature: $viewModel.maxTemperature,
+                status: $viewModel.status
+            )
             .padding()
-        }
-        .onReceive(viewModel.$sunPosition) { newPosition in
-            withAnimation(.linear(duration: 0.5)) {
-                self.sunPosition = newPosition
-            }
         }
         .onAppear {
             viewModel.onAppear()
@@ -30,6 +30,6 @@ struct CurrentWeatherView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        CurrentWeatherView(viewModel: CurrentWeatherViewModel.mock)
+        CurrentWeatherView(viewModel: CurrentWeatherViewModel.TestData.munichMorning)
     }
 }

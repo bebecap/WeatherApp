@@ -11,12 +11,17 @@ import Foundation
 
 final class CurrentWeatherViewModel: NSObject, ObservableObject {
     @LazyInjected(\CoreContainer.getCurrentWeatherUseCase) private var getCurrentWeatherUseCase
+    @LazyInjected(\CoreContainer.locationManager) private var locationManager
     
-    private var currentWeather: CurrentWeather? {
+    var currentWeather: CurrentWeather? {
         didSet {
             temperature = currentWeather?.temperature
             city = currentWeather?.city
+            minTemperature = currentWeather?.minTemperature
+            maxTemperature = currentWeather?.maxTemperature
+            status = currentWeather?.status
             cloudsOpacity = Double(currentWeather?.clouds ?? 0) / 100
+            calculateSunPosition()
         }
     }
     
@@ -26,24 +31,18 @@ final class CurrentWeatherViewModel: NSObject, ObservableObject {
     @Published var isLoading: Bool = false
     @Published var units: Units = .metric
     @Published var sunPosition: Double? = nil
+    @Published var minTemperature: Double? = 0
+    @Published var maxTemperature: Double? = 0
+    @Published var status: String?
     
     private var timer: Timer?
-    
-    private let locationManager: CLLocationManager
-    
-    override init() {
-        locationManager = CLLocationManager()
-        
-        super.init()
-        
-        locationManager.delegate = self
-    }
-    
+
     func onAppear() {
         timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] _ in
             self?.calculateSunPosition()
         }
         isLoading = true
+        locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.distanceFilter = 5000
         locationManager.startUpdatingLocation()
@@ -63,29 +62,16 @@ final class CurrentWeatherViewModel: NSObject, ObservableObject {
 
         return elapsedSinceSunrise / daylightDuration
     }
-
 }
 
 extension CurrentWeatherViewModel: CLLocationManagerDelegate {
     @MainActor
     func locationManager(_ manager: CLLocationManager,
                          didUpdateLocations locations: [CLLocation]) {
-        
-        guard let userLocation = locations.first else { return }
+        guard let userLocation = locationManager.location else { return }
         Task {
             currentWeather = try await getCurrentWeatherUseCase.execute(coordinate: .init(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude), units: units)
-            calculateSunPosition()
             isLoading = false
         }
-    }
-}
-
-extension CurrentWeatherViewModel {
-    static var mock: CurrentWeatherViewModel {
-        let viewModel = CurrentWeatherViewModel()
-        viewModel.temperature = 25
-        viewModel.city = "Munich"
-        viewModel.sunPosition = 0.35
-        return viewModel
     }
 }
