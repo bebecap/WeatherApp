@@ -49,8 +49,7 @@ struct FlipCardView: View {
                     axis: (x: 0.0, y: 1.0, z: 0.0)
                 )
         }
-        .onChange(of: locationSearchViewModel.selectedLocation) { selectedLocation in
-            guard selectedLocation != nil else { return }
+        .onReceive(locationSearchViewModel.shouldCloseSubject) { _ in
             withAnimation {
                 isFlipped.toggle()
             }

@@ -43,7 +43,7 @@
 		649B022B2AA91B8E0039CCB5 /* Mocks.Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B022A2AA91B8E0039CCB5 /* Mocks.Generated.swift */; };
 		649B02302AA91D060039CCB5 /* CurrentWeatherSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B022F2AA91D060039CCB5 /* CurrentWeatherSnapshotTests.swift */; };
 		649B02322AA91D110039CCB5 /* MockContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B02312AA91D110039CCB5 /* MockContainer.swift */; };
-		649B02342AA91D300039CCB5 /* XCTest+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B02332AA91D300039CCB5 /* XCTest+Factory.swift */; };
+		649B02342AA91D300039CCB5 /* WeatherTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B02332AA91D300039CCB5 /* WeatherTestCase.swift */; };
 		649B02362AA920770039CCB5 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B02352AA920770039CCB5 /* LocationManager.swift */; };
 		649B023D2AA924A90039CCB5 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 649B023C2AA924A90039CCB5 /* SnapshotTesting */; };
 		649B02402AA9325F0039CCB5 /* CurrentWeatherViewModel+TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B023F2AA9325F0039CCB5 /* CurrentWeatherViewModel+TestData.swift */; };
@@ -53,6 +53,11 @@
 		649B02492AAA2D070039CCB5 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B02482AAA2D070039CCB5 /* Location.swift */; };
 		649B024B2AAA2E2B0039CCB5 /* GetLocationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B024A2AAA2E2B0039CCB5 /* GetLocationsUseCase.swift */; };
 		649B024D2AAA2E800039CCB5 /* LocationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B024C2AAA2E800039CCB5 /* LocationSearchViewModel.swift */; };
+		649B024F2AAA6B180039CCB5 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B024E2AAA6B180039CCB5 /* ErrorView.swift */; };
+		649B02522AAA6ED30039CCB5 /* LocationSearchViewSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B02512AAA6ED30039CCB5 /* LocationSearchViewSnapshotTests.swift */; };
+		649B02562AAA6FD60039CCB5 /* LocationSearchViewModel+TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B02552AAA6FD60039CCB5 /* LocationSearchViewModel+TestData.swift */; };
+		649B02582AAA706C0039CCB5 /* Location+TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B02572AAA706C0039CCB5 /* Location+TestData.swift */; };
+		649B025A2AAA731A0039CCB5 /* FlipCardSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B02592AAA731A0039CCB5 /* FlipCardSnapshotTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,7 +108,7 @@
 		649B022A2AA91B8E0039CCB5 /* Mocks.Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mocks.Generated.swift; sourceTree = "<group>"; };
 		649B022F2AA91D060039CCB5 /* CurrentWeatherSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherSnapshotTests.swift; sourceTree = "<group>"; };
 		649B02312AA91D110039CCB5 /* MockContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockContainer.swift; sourceTree = "<group>"; };
-		649B02332AA91D300039CCB5 /* XCTest+Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+Factory.swift"; sourceTree = "<group>"; };
+		649B02332AA91D300039CCB5 /* WeatherTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTestCase.swift; sourceTree = "<group>"; };
 		649B02352AA920770039CCB5 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		649B023F2AA9325F0039CCB5 /* CurrentWeatherViewModel+TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrentWeatherViewModel+TestData.swift"; sourceTree = "<group>"; };
 		649B02422AAA26EF0039CCB5 /* LocationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchView.swift; sourceTree = "<group>"; };
@@ -112,6 +117,11 @@
 		649B02482AAA2D070039CCB5 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		649B024A2AAA2E2B0039CCB5 /* GetLocationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationsUseCase.swift; sourceTree = "<group>"; };
 		649B024C2AAA2E800039CCB5 /* LocationSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewModel.swift; sourceTree = "<group>"; };
+		649B024E2AAA6B180039CCB5 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		649B02512AAA6ED30039CCB5 /* LocationSearchViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewSnapshotTests.swift; sourceTree = "<group>"; };
+		649B02552AAA6FD60039CCB5 /* LocationSearchViewModel+TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationSearchViewModel+TestData.swift"; sourceTree = "<group>"; };
+		649B02572AAA706C0039CCB5 /* Location+TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+TestData.swift"; sourceTree = "<group>"; };
+		649B02592AAA731A0039CCB5 /* FlipCardSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipCardSnapshotTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,10 +188,10 @@
 		6481097C2AA7D4F1006A751C /* WeatherAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				649B02502AAA6EB60039CCB5 /* SnaphshotTests */,
 				6481097D2AA7D4F1006A751C /* WeatherAppTests.swift */,
-				649B022F2AA91D060039CCB5 /* CurrentWeatherSnapshotTests.swift */,
 				649B02312AA91D110039CCB5 /* MockContainer.swift */,
-				649B02332AA91D300039CCB5 /* XCTest+Factory.swift */,
+				649B02332AA91D300039CCB5 /* WeatherTestCase.swift */,
 			);
 			path = WeatherAppTests;
 			sourceTree = "<group>";
@@ -347,6 +357,7 @@
 		649B02222AA912440039CCB5 /* WeatherBackground */ = {
 			isa = PBXGroup;
 			children = (
+				649B024E2AAA6B180039CCB5 /* ErrorView.swift */,
 				649B021C2AA8665F0039CCB5 /* WeatherBackgroundView.swift */,
 				649B02232AA917330039CCB5 /* SkyBackgroundView.swift */,
 				649B02252AA917BE0039CCB5 /* CloudsView.swift */,
@@ -374,8 +385,20 @@
 			isa = PBXGroup;
 			children = (
 				649B023F2AA9325F0039CCB5 /* CurrentWeatherViewModel+TestData.swift */,
+				649B02552AAA6FD60039CCB5 /* LocationSearchViewModel+TestData.swift */,
+				649B02572AAA706C0039CCB5 /* Location+TestData.swift */,
 			);
 			path = TestData;
+			sourceTree = "<group>";
+		};
+		649B02502AAA6EB60039CCB5 /* SnaphshotTests */ = {
+			isa = PBXGroup;
+			children = (
+				649B022F2AA91D060039CCB5 /* CurrentWeatherSnapshotTests.swift */,
+				649B02512AAA6ED30039CCB5 /* LocationSearchViewSnapshotTests.swift */,
+				649B02592AAA731A0039CCB5 /* FlipCardSnapshotTests.swift */,
+			);
+			path = SnaphshotTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -489,6 +512,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				649B02582AAA706C0039CCB5 /* Location+TestData.swift in Sources */,
 				6481096F2AA7D4EF006A751C /* CurrentWeatherView.swift in Sources */,
 				649B01FC2AA7DCE20039CCB5 /* GlobalConstants.swift in Sources */,
 				649B021D2AA8665F0039CCB5 /* WeatherBackgroundView.swift in Sources */,
@@ -506,6 +530,7 @@
 				649B01F02AA7DB4D0039CCB5 /* WeatherDataSource.swift in Sources */,
 				649B024B2AAA2E2B0039CCB5 /* GetLocationsUseCase.swift in Sources */,
 				649B02082AA7E05E0039CCB5 /* WeatherEndpoints.swift in Sources */,
+				649B02562AAA6FD60039CCB5 /* LocationSearchViewModel+TestData.swift in Sources */,
 				649B02452AAA27AA0039CCB5 /* FlipCardView.swift in Sources */,
 				649B020E2AA7E7330039CCB5 /* CoreContainer.swift in Sources */,
 				649B02212AA87C7E0039CCB5 /* DegreeView.swift in Sources */,
@@ -526,6 +551,7 @@
 				649B02282AA9185A0039CCB5 /* SunView.swift in Sources */,
 				649B02242AA917330039CCB5 /* SkyBackgroundView.swift in Sources */,
 				649B01F32AA7DBAB0039CCB5 /* Coordinate.swift in Sources */,
+				649B024F2AAA6B180039CCB5 /* ErrorView.swift in Sources */,
 				649B02192AA7EA750039CCB5 /* CurrentWeatherViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -534,7 +560,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				649B02342AA91D300039CCB5 /* XCTest+Factory.swift in Sources */,
+				649B025A2AAA731A0039CCB5 /* FlipCardSnapshotTests.swift in Sources */,
+				649B02522AAA6ED30039CCB5 /* LocationSearchViewSnapshotTests.swift in Sources */,
+				649B02342AA91D300039CCB5 /* WeatherTestCase.swift in Sources */,
 				649B02302AA91D060039CCB5 /* CurrentWeatherSnapshotTests.swift in Sources */,
 				6481097E2AA7D4F1006A751C /* WeatherAppTests.swift in Sources */,
 				649B02322AA91D110039CCB5 /* MockContainer.swift in Sources */,

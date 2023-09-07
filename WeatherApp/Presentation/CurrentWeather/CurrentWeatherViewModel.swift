@@ -34,6 +34,7 @@ final class CurrentWeatherViewModel: NSObject, ObservableObject {
     @Published var minTemperature: Double? = 0
     @Published var maxTemperature: Double? = 0
     @Published var status: String?
+    @Published var errorText: String? = nil
     
     @Published var selectedLocation: Location? = nil {
         didSet {
@@ -81,7 +82,12 @@ final class CurrentWeatherViewModel: NSObject, ObservableObject {
     private func updateWeather(for coordinate: Coordinate) {
         isLoading = true
         Task {
-            currentWeather = try await getCurrentWeatherUseCase.execute(coordinate: .init(latitude: coordinate.latitude, longitude: coordinate.longitude), units: units)
+            do {
+                errorText = nil
+                currentWeather = try await getCurrentWeatherUseCase.execute(coordinate: .init(latitude: coordinate.latitude, longitude: coordinate.longitude), units: units)
+            } catch {
+                errorText = error.localizedDescription
+            }
             isLoading = false
         }
     }
