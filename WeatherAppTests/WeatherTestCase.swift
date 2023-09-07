@@ -7,6 +7,8 @@
 
 import Factory
 import Foundation
+import SnapshotTesting
+import SwiftUI
 import XCTest
 @testable import WeatherApp
 
@@ -58,4 +60,10 @@ class WeatherTestCase: XCTestCase {
     }
 }
 
-class WeatherSnapshotTestCase: WeatherTestCase {}
+class WeatherSnapshotTestCase: WeatherTestCase {
+    func snapshotTest(view: some View, testName: String = #function, file: StaticString = #file) {
+        let hostingController = UIHostingController(rootView: view)
+        hostingController.view.frame = UIScreen.main.bounds
+        assertSnapshot(of: hostingController.view, as: .image, file: file, testName: testName)
+    }
+}
