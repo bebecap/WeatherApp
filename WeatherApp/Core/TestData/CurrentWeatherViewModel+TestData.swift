@@ -57,6 +57,12 @@ extension CurrentWeatherViewModel {
             return viewModel
         }
         
+        static var error: CurrentWeatherViewModel {
+            let viewModel = CurrentWeatherViewModel()
+            viewModel.errorText = "No location"
+            return viewModel
+        }
+        
         static let noData: CurrentWeatherViewModel = .init()
     }
 }

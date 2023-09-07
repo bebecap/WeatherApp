@@ -52,6 +52,16 @@ final class CurrentWeatherViewModel: NSObject, ObservableObject {
     
     private var timer: Timer?
 
+    func retry() {
+        guard let coordinate = locationManager.location?.coordinate else {
+            errorText = "No location to fetch the data"
+            return
+        }
+        Task {
+            await updateWeather(for: .init(latitude: coordinate.latitude, longitude: coordinate.longitude))
+        }
+    }
+    
     func onAppear() {
         timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] _ in
             self?.calculateSunPosition()

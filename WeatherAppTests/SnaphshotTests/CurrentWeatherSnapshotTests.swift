@@ -17,19 +17,23 @@ final class CurrentWeatherSnapshotTest: WeatherSnapshotTestCase {
         snapshotTest(view: CurrentWeatherView(viewModel: .TestData.noData, selectedLocation: .constant(nil)))
     }
     
-    func testCurrentWeather_munichMorning() {
+    func testCurrentWeather_withMunichMorning() {
         snapshotTest(view: CurrentWeatherView(viewModel: .TestData.munichMorning, selectedLocation: .constant(nil)))
     }
     
-    func testCurrentWeather_munichNoon() {
+    func testCurrentWeather_withMunichNoon() {
         snapshotTest(view: CurrentWeatherView(viewModel: .TestData.munichNoon, selectedLocation: .constant(nil)))
     }
     
-    func testCurrentWeather_munichEvening() {
+    func testCurrentWeather_withMunichEvening() {
         snapshotTest(view: CurrentWeatherView(viewModel: .TestData.munichEvening, selectedLocation: .constant(nil)))
     }
     
-    func testCurrentWeather_munichEveningCloudy() {
+    func testCurrentWeather_withMunichEveningCloudy() {
         snapshotTest(view: CurrentWeatherView(viewModel: .TestData.munichEveningCloudy, selectedLocation: .constant(nil)))
+    }
+    
+    func testCurrentWeather_withError() {
+        snapshotTest(view: CurrentWeatherView(viewModel: .TestData.error, selectedLocation: .constant(nil)))
     }
 }

@@ -26,25 +26,3 @@ final class WeatherAPIImpl: HTTPClient, WeatherDataSource {
         }
     }
 }
-
-fileprivate extension CurrentWeather {
-    init(entity: CurrentWeatherEntity) {
-        temperature = entity.mainWeather.temperature
-        minTemperature = entity.mainWeather.minimumTemperature
-        maxTemperature = entity.mainWeather.maximumTemperature
-        status = entity.weatherConditions.first?.group
-        city = entity.cityName
-        sunset = Date(timeIntervalSince1970: TimeInterval(entity.system.sunsetTime))
-        sunrise = Date(timeIntervalSince1970: TimeInterval(entity.system.sunriseTime))
-        clouds = entity.cloudCoverage.coveragePercentage
-    }
-}
-
-fileprivate extension Location {
-    init(entity: LocationEntity) {
-        name = entity.name
-        coordinate = .init(latitude: entity.latitude, longitude: entity.longitude)
-        country = entity.country
-        state = entity.state
-    }
-}

@@ -22,3 +22,13 @@ struct Location: Hashable {
         return text
     }
 }
+
+extension Location {
+    init(entity: LocationEntity) {
+        name = entity.name
+        coordinate = .init(latitude: entity.latitude, longitude: entity.longitude)
+        country = entity.country
+        state = entity.state
+    }
+}
+
