@@ -35,6 +35,20 @@ final class CurrentWeatherViewModel: NSObject, ObservableObject {
     @Published var maxTemperature: Double? = 0
     @Published var status: String?
     
+    @Published var selectedLocation: Location? = nil {
+        didSet {
+            guard let selectedLocation else {
+                locationManager.startUpdatingLocation()
+                return
+            }
+            
+            locationManager.stopUpdatingLocation()
+            Task {
+                await updateWeather(for: selectedLocation.coordinate)
+            }
+        }
+    }
+    
     private var timer: Timer?
 
     func onAppear() {
@@ -62,16 +76,23 @@ final class CurrentWeatherViewModel: NSObject, ObservableObject {
 
         return elapsedSinceSunrise / daylightDuration
     }
+    
+    @MainActor
+    private func updateWeather(for coordinate: Coordinate) {
+        isLoading = true
+        Task {
+            currentWeather = try await getCurrentWeatherUseCase.execute(coordinate: .init(latitude: coordinate.latitude, longitude: coordinate.longitude), units: units)
+            isLoading = false
+        }
+    }
 }
 
 extension CurrentWeatherViewModel: CLLocationManagerDelegate {
-    @MainActor
     func locationManager(_ manager: CLLocationManager,
                          didUpdateLocations locations: [CLLocation]) {
-        guard let userLocation = locationManager.location else { return }
+        guard let coordinate = locationManager.location?.coordinate else { return }
         Task {
-            currentWeather = try await getCurrentWeatherUseCase.execute(coordinate: .init(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude), units: units)
-            isLoading = false
+            await updateWeather(for: .init(latitude: coordinate.latitude, longitude: coordinate.longitude))
         }
     }
 }

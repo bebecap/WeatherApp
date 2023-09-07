@@ -120,9 +120,9 @@ struct CloudCoverageEntity: Codable {
 }
 
 struct SystemInformationEntity: Codable {
-    let id: Int
-    let type: Int
-    let country: String
+    let id: Int?
+    let type: Int?
+    let country: String?
     let sunriseTime: Int
     let sunsetTime: Int
     

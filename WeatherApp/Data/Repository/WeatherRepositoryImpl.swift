@@ -14,4 +14,8 @@ final class WeatherRepositoryImpl: WeatherRepository {
     func getCurrentWeather(coordinate: Coordinate, units: Units) async throws -> CurrentWeather {
         try await dataSource.getCurrentWeather(coordinate: coordinate, units: units)
     }
+    
+    func getLocations(query: String) async throws -> [Location] {
+        try await dataSource.getLocations(query: query)
+    }
 }

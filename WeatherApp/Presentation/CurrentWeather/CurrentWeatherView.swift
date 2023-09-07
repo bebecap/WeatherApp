@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CurrentWeatherView: View {
     @StateObject var viewModel: CurrentWeatherViewModel
+    @Binding var selectedLocation: Location?
 
     var body: some View {
         ZStack {
@@ -22,6 +23,9 @@ struct CurrentWeatherView: View {
             )
             .padding()
         }
+        .onChange(of: selectedLocation) { newValue in
+            viewModel.selectedLocation = newValue
+        }
         .onAppear {
             viewModel.onAppear()
         }
@@ -30,6 +34,6 @@ struct CurrentWeatherView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        CurrentWeatherView(viewModel: CurrentWeatherViewModel.TestData.munichMorning)
+        CurrentWeatherView(viewModel: CurrentWeatherViewModel.TestData.munichMorning, selectedLocation: .constant(nil))
     }
 }

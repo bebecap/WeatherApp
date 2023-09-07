@@ -52,6 +52,16 @@ class WeatherDataSourceMock: WeatherDataSource {
         }
         fatalError("getCurrentWeatherHandler returns can't have a default value thus its handler must be set")
     }
+
+    var getLocationsCallCount = 0
+    var getLocationsHandler: ((String) async throws -> ([Location]))?
+    func getLocations(query: String) async throws -> [Location] {
+        getLocationsCallCount += 1
+        if let getLocationsHandler = getLocationsHandler {
+            return try await getLocationsHandler(query)
+        }
+        return [Location]()
+    }
 }
 
 class WeatherRepositoryMock: WeatherRepository {
@@ -67,20 +77,30 @@ class WeatherRepositoryMock: WeatherRepository {
         }
         fatalError("getCurrentWeatherHandler returns can't have a default value thus its handler must be set")
     }
+
+    var getLocationsCallCount = 0
+    var getLocationsHandler: ((String) async throws -> ([Location]))?
+    func getLocations(query: String) async throws -> [Location] {
+        getLocationsCallCount += 1
+        if let getLocationsHandler = getLocationsHandler {
+            return try await getLocationsHandler(query)
+        }
+        return [Location]()
+    }
 }
 
-class GetCurrentWeatherUseCaseMock: GetCurrentWeatherUseCase {
+class GetLocationsUseCaseMock: GetLocationsUseCase {
     init() { }
 
 
     var executeCallCount = 0
-    var executeHandler: ((Coordinate, Units) async throws -> (CurrentWeather))?
-    func execute(coordinate: Coordinate, units: Units) async throws -> CurrentWeather {
+    var executeHandler: ((String) async throws -> ([Location]))?
+    func execute(query: String) async throws -> [Location] {
         executeCallCount += 1
         if let executeHandler = executeHandler {
-            return try await executeHandler(coordinate, units)
+            return try await executeHandler(query)
         }
-        fatalError("executeHandler returns can't have a default value thus its handler must be set")
+        return [Location]()
     }
 }
 
@@ -124,6 +144,31 @@ class LocationManagerMock: LocationManager {
             startUpdatingLocationHandler()
         }
         
+    }
+
+    var stopUpdatingLocationCallCount = 0
+    var stopUpdatingLocationHandler: (() -> ())?
+    func stopUpdatingLocation()  {
+        stopUpdatingLocationCallCount += 1
+        if let stopUpdatingLocationHandler = stopUpdatingLocationHandler {
+            stopUpdatingLocationHandler()
+        }
+        
+    }
+}
+
+class GetCurrentWeatherUseCaseMock: GetCurrentWeatherUseCase {
+    init() { }
+
+
+    var executeCallCount = 0
+    var executeHandler: ((Coordinate, Units) async throws -> (CurrentWeather))?
+    func execute(coordinate: Coordinate, units: Units) async throws -> CurrentWeather {
+        executeCallCount += 1
+        if let executeHandler = executeHandler {
+            return try await executeHandler(coordinate, units)
+        }
+        fatalError("executeHandler returns can't have a default value thus its handler must be set")
     }
 }
 

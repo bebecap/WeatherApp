@@ -48,6 +48,10 @@ class WeatherTestCase: XCTestCase {
             MockContainer.shared.getCurrentWeatherUseCase()
         }
         
+        CoreContainer.shared.getLocationsUseCase.register {
+            MockContainer.shared.getLocationsUseCase()
+        }
+        
         CoreContainer.shared.locationManager.register {
             MockContainer.shared.locationManager()
         }

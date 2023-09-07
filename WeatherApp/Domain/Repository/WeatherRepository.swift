@@ -10,4 +10,5 @@ import Foundation
 /// @mockable
 protocol WeatherRepository {
     func getCurrentWeather(coordinate: Coordinate, units: Units) async throws -> CurrentWeather
+    func getLocations(query: String) async throws -> [Location]
 }

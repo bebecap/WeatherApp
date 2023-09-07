@@ -12,4 +12,8 @@ extension CoreContainer {
     var getCurrentWeatherUseCase: Factory<GetCurrentWeatherUseCase> {
         self { GetCurrentWeatherUseCaseImpl() }
     }
+    
+    var getLocationsUseCase: Factory<GetLocationsUseCase> {
+        self { GetLocationsUseCaseImpl() }
+    }
 }
