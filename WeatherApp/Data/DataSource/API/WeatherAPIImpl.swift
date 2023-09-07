@@ -16,6 +16,15 @@ final class WeatherAPIImpl: HTTPClient, WeatherDataSource {
         case .failure(let error): throw error
         }
     }
+    
+    func getLocations(query: String) async throws -> [Location] {
+        let result = await sendRequest(endpoint: WeatherEndpoints.geocoding(location: query), responseModel: [LocationEntity].self)
+        switch result {
+        case .success(let locations):
+            return locations.map { Location(entity: $0) }
+        case .failure(let error): throw error
+        }
+    }
 }
 
 fileprivate extension CurrentWeather {
@@ -28,5 +37,14 @@ fileprivate extension CurrentWeather {
         sunset = Date(timeIntervalSince1970: TimeInterval(entity.system.sunsetTime))
         sunrise = Date(timeIntervalSince1970: TimeInterval(entity.system.sunriseTime))
         clouds = entity.cloudCoverage.coveragePercentage
+    }
+}
+
+fileprivate extension Location {
+    init(entity: LocationEntity) {
+        name = entity.name
+        coordinate = .init(latitude: entity.latitude, longitude: entity.longitude)
+        country = entity.country
+        state = entity.state
     }
 }

@@ -1,5 +1,5 @@
 //
-//  GetCurrentWeather.swift
+//  GetCurrentWeatherUseCase.swift
 //  WeatherApp
 //
 //  Created by Volodymyr Grytsenko on 06.09.23.

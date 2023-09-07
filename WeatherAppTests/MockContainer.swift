@@ -39,4 +39,8 @@ extension MockContainer {
     var getCurrentWeatherUseCase: Factory<GetCurrentWeatherUseCaseMock> {
         self { GetCurrentWeatherUseCaseMock() }
     }
+    
+    var getLocationsUseCase: Factory<GetLocationsUseCaseMock> {
+        self { GetLocationsUseCaseMock() }
+    }
 }

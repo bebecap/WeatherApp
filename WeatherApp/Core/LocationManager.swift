@@ -16,6 +16,7 @@ protocol LocationManager {
     
     func requestWhenInUseAuthorization()
     func startUpdatingLocation()
+    func stopUpdatingLocation()
 }
 
 extension CLLocationManager: LocationManager {}

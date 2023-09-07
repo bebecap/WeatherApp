@@ -55,7 +55,8 @@ extension WeatherEndpoints: Endpoint {
         case .geocoding(let location):
             return [
                 "q": location,
-                "appId": GlobalConstants.weatherAPIKey
+                "appId": GlobalConstants.weatherAPIKey,
+                "limit": "10"
             ]
         }
     }
