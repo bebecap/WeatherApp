@@ -21,13 +21,9 @@ final class WeatherAPIImpl: HTTPClient, WeatherDataSource {
 fileprivate extension CurrentWeather {
     init(entity: CurrentWeatherEntity) {
         temperature = entity.mainWeather.temperature
-        feelsLikeTemperature = entity.mainWeather.feelsLikeTemperature
-        minimumTemperature = entity.mainWeather.minimumTemperature
-        maximumTemperature = entity.mainWeather.maximumTemperature
-        atmosphericPressure = entity.mainWeather.atmosphericPressure
-        humidityPercentage = entity.mainWeather.humidityPercentage
-        seaLevelPressure = entity.mainWeather.seaLevelPressure
-        groundLevelPressure = entity.mainWeather.groundLevelPressure
+        minTemperature = entity.mainWeather.minimumTemperature
+        maxTemperature = entity.mainWeather.maximumTemperature
+        status = entity.weatherConditions.first?.group
         city = entity.cityName
         sunset = Date(timeIntervalSince1970: TimeInterval(entity.system.sunsetTime))
         sunrise = Date(timeIntervalSince1970: TimeInterval(entity.system.sunriseTime))

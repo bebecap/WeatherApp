@@ -4,6 +4,7 @@
 
 
 
+import CoreLocation
 import Factory
 import Foundation
 
@@ -80,6 +81,49 @@ class GetCurrentWeatherUseCaseMock: GetCurrentWeatherUseCase {
             return try await executeHandler(coordinate, units)
         }
         fatalError("executeHandler returns can't have a default value thus its handler must be set")
+    }
+}
+
+class LocationManagerMock: LocationManager {
+    init() { }
+    init(location: CLLocation? = nil, distanceFilter: CLLocationDistance, delegate: CLLocationManagerDelegate? = nil) {
+        self.location = location
+        self._distanceFilter = distanceFilter
+        self.delegate = delegate
+    }
+
+
+    var locationSetCallCount = 0
+    var location: CLLocation? = nil { didSet { locationSetCallCount += 1 } }
+
+    var distanceFilterSetCallCount = 0
+    private var _distanceFilter: CLLocationDistance!  { didSet { distanceFilterSetCallCount += 1 } }
+    var distanceFilter: CLLocationDistance {
+        get { return _distanceFilter }
+        set { _distanceFilter = newValue }
+    }
+
+    var delegateSetCallCount = 0
+    var delegate: CLLocationManagerDelegate? = nil { didSet { delegateSetCallCount += 1 } }
+
+    var requestWhenInUseAuthorizationCallCount = 0
+    var requestWhenInUseAuthorizationHandler: (() -> ())?
+    func requestWhenInUseAuthorization()  {
+        requestWhenInUseAuthorizationCallCount += 1
+        if let requestWhenInUseAuthorizationHandler = requestWhenInUseAuthorizationHandler {
+            requestWhenInUseAuthorizationHandler()
+        }
+        
+    }
+
+    var startUpdatingLocationCallCount = 0
+    var startUpdatingLocationHandler: (() -> ())?
+    func startUpdatingLocation()  {
+        startUpdatingLocationCallCount += 1
+        if let startUpdatingLocationHandler = startUpdatingLocationHandler {
+            startUpdatingLocationHandler()
+        }
+        
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  SunPathView.swift
+//  WeatherBackgroundView.swift
 //  WeatherApp
 //
 //  Created by Volodymyr Grytsenko on 06.09.23.

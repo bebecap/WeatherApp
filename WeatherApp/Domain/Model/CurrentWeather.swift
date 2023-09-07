@@ -9,13 +9,9 @@ import Foundation
 
 struct CurrentWeather: Hashable {
     let temperature: Double
-    let feelsLikeTemperature: Double
-    let minimumTemperature: Double
-    let maximumTemperature: Double
-    let atmosphericPressure: Int
-    let humidityPercentage: Int
-    let seaLevelPressure: Int?
-    let groundLevelPressure: Int?
+    let minTemperature: Double
+    let maxTemperature: Double
+    let status: String?
     let city: String?
     let sunset: Date
     let sunrise: Date

@@ -16,18 +16,12 @@ struct SkyBackgroundView: View {
     
     var body: some View {
         ZStack {
-            if let sunPosition {
-                Rectangle()
-                    .fill(.gray)
-                    .edgesIgnoringSafeArea(.all)
-                Rectangle()
-                    .fill(skyColor(sunPosition: sunPosition).opacity(1 - (cloudsOpacity ?? 1)))
-                    .edgesIgnoringSafeArea(.all)
-            } else {
-                Rectangle()
-                    .fill(.gray)
-                    .edgesIgnoringSafeArea(.all)
-            }
+            Rectangle()
+                .fill(.gray)
+                .edgesIgnoringSafeArea(.all)
+            Rectangle()
+                .fill(skyColor(sunPosition: sunPosition ?? 0).opacity(1 - (cloudsOpacity ?? 0)))
+                .edgesIgnoringSafeArea(.all)
         }
     }
     

@@ -5,6 +5,7 @@
 //  Created by Volodymyr Grytsenko on 06.09.23.
 //
 
+import CoreLocation
 import Factory
 import Foundation
 
@@ -14,5 +15,9 @@ final class CoreContainer: SharedContainer {
     
     var networkDataLoader: Factory<NetworkDataLoader> {
         self { URLSession.shared }
+    }
+    
+    var locationManager: Factory<LocationManager> {
+        self { CLLocationManager() }.singleton
     }
 }
