@@ -20,8 +20,6 @@ final class GetLocationsUseCaseTests: WeatherTestCase {
         super.setUp()
         
         getLocationsUseCase = GetLocationsUseCaseImpl()
-        weatherRepository.getLocationsCallCount = 0
-        weatherRepository.getCurrentWeatherCallCount = 0
     }
     
     func testExecute_whenSuccess() async {

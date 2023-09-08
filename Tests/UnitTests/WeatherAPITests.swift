@@ -20,7 +20,6 @@ final class WeatherAPITests: WeatherTestCase {
         super.setUp()
         
         weatherAPI = WeatherAPIImpl()
-        networkDataLoader.dataCallCount = 0
     }
     
     private func networkDataLoaderResponse<T: Codable>(object: T, statusCode: Int) throws -> (Data, URLResponse) {

@@ -21,7 +21,15 @@
       "target" : {
         "containerPath" : "container:WeatherApp.xcodeproj",
         "identifier" : "648109782AA7D4F1006A751C",
-        "name" : "WeatherAppTests"
+        "name" : "UnitTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:WeatherApp.xcodeproj",
+        "identifier" : "649B027B2AAA9D490039CCB5",
+        "name" : "SnapshotTests"
       }
     }
   ],

@@ -35,7 +35,9 @@ struct CurrentWeatherView: View {
             }
         }
         .onChange(of: selectedLocation) { newValue in
-            viewModel.selectedLocation = newValue
+            Task {
+                try await viewModel.updateSelectedLocation(newValue)
+            }
         }
         .onAppear {
             viewModel.onAppear()

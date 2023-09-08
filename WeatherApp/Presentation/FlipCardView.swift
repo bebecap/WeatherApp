@@ -10,8 +10,8 @@ import SwiftUI
 
 struct FlipCardView: View {
     @State private var isFlipped: Bool = false
-    @StateObject var currentWeatherViewModel: CurrentWeatherViewModel
-    @StateObject var locationSearchViewModel: LocationSearchViewModel
+    @StateObject var currentWeatherViewModel = CurrentWeatherViewModel()
+    @StateObject var locationSearchViewModel = LocationSearchViewModel()
 
     var body: some View {
         ZStack {

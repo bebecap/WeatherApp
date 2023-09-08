@@ -20,8 +20,6 @@ final class WeatherRepositoryTests: WeatherTestCase {
         super.setUp()
         
         weatherRepository = WeatherRepositoryImpl()
-        weatherDataSource.getCurrentWeatherCallCount = 0
-        weatherDataSource.getLocationsCallCount = 0
     }
     
     func testGetCurrentWeather_whenSuccess() async {

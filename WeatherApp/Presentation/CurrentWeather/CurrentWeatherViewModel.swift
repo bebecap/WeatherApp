@@ -36,18 +36,14 @@ final class CurrentWeatherViewModel: NSObject, ObservableObject {
     @Published var status: String?
     @Published var errorText: String? = nil
     
-    @Published var selectedLocation: Location? = nil {
-        didSet {
-            guard let selectedLocation else {
-                locationManager.startUpdatingLocation()
-                return
-            }
-            
-            locationManager.stopUpdatingLocation()
-            Task {
-                await updateWeather(for: selectedLocation.coordinate)
-            }
+    func updateSelectedLocation(_ location: Location? = nil) async throws {
+        guard let location else {
+            locationManager.startUpdatingLocation()
+            return
         }
+        
+        locationManager.stopUpdatingLocation()
+        await updateWeather(for: location.coordinate)
     }
     
     private var timer: Timer?
@@ -89,17 +85,15 @@ final class CurrentWeatherViewModel: NSObject, ObservableObject {
     }
     
     @MainActor
-    private func updateWeather(for coordinate: Coordinate) {
+    private func updateWeather(for coordinate: Coordinate) async {
         isLoading = true
-        Task {
-            do {
-                errorText = nil
-                currentWeather = try await getCurrentWeatherUseCase.execute(coordinate: .init(latitude: coordinate.latitude, longitude: coordinate.longitude), units: units)
-            } catch {
-                errorText = error.localizedDescription
-            }
-            isLoading = false
+        do {
+            errorText = nil
+            currentWeather = try await getCurrentWeatherUseCase.execute(coordinate: .init(latitude: coordinate.latitude, longitude: coordinate.longitude), units: units)
+        } catch {
+            errorText = error.localizedDescription
         }
+        isLoading = false
     }
 }
 

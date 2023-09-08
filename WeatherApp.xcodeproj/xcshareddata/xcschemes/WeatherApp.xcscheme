@@ -40,8 +40,19 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "648109782AA7D4F1006A751C"
-               BuildableName = "WeatherAppTests.xctest"
-               BlueprintName = "WeatherAppTests"
+               BuildableName = "UnitTests.xctest"
+               BlueprintName = "UnitTests"
+               ReferencedContainer = "container:WeatherApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "649B027B2AAA9D490039CCB5"
+               BuildableName = "SnapshotTests.xctest"
+               BlueprintName = "SnapshotTests"
                ReferencedContainer = "container:WeatherApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
