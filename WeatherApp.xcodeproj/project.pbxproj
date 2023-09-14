@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6481096D2AA7D4EF006A751C /* WeatherAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6481096C2AA7D4EF006A751C /* WeatherAppApp.swift */; };
+		6481096D2AA7D4EF006A751C /* WeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6481096C2AA7D4EF006A751C /* WeatherApp.swift */; };
 		6481096F2AA7D4EF006A751C /* CurrentWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6481096E2AA7D4EF006A751C /* CurrentWeatherView.swift */; };
 		648109712AA7D4F0006A751C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 648109702AA7D4F0006A751C /* Assets.xcassets */; };
 		648109742AA7D4F0006A751C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 648109732AA7D4F0006A751C /* Preview Assets.xcassets */; };
@@ -94,7 +94,7 @@
 
 /* Begin PBXFileReference section */
 		648109692AA7D4EF006A751C /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		6481096C2AA7D4EF006A751C /* WeatherAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppApp.swift; sourceTree = "<group>"; };
+		6481096C2AA7D4EF006A751C /* WeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherApp.swift; sourceTree = "<group>"; };
 		6481096E2AA7D4EF006A751C /* CurrentWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherView.swift; sourceTree = "<group>"; };
 		648109702AA7D4F0006A751C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		648109732AA7D4F0006A751C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -266,7 +266,7 @@
 		649B01E12AA7D8090039CCB5 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				6481096C2AA7D4EF006A751C /* WeatherAppApp.swift */,
+				6481096C2AA7D4EF006A751C /* WeatherApp.swift */,
 				649B01E52AA7D8570039CCB5 /* LocationSearch */,
 				649B01E42AA7D8510039CCB5 /* CurrentWeather */,
 				649B02442AAA27AA0039CCB5 /* FlipCardView.swift */,
@@ -661,7 +661,7 @@
 				649B020A2AA7E6D00039CCB5 /* WeatherRepository.swift in Sources */,
 				649B02642AAA80B20039CCB5 /* MainWeatherEntity+TestData.swift in Sources */,
 				649B026A2AAA81990039CCB5 /* SystemInformationEntity+TestData.swift in Sources */,
-				6481096D2AA7D4EF006A751C /* WeatherAppApp.swift in Sources */,
+				6481096D2AA7D4EF006A751C /* WeatherApp.swift in Sources */,
 				649B02172AA7E8AD0039CCB5 /* GetCurrentWeatherUseCase.swift in Sources */,
 				649B02282AA9185A0039CCB5 /* SunView.swift in Sources */,
 				649B02242AA917330039CCB5 /* SkyBackgroundView.swift in Sources */,
