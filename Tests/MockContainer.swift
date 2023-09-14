@@ -15,7 +15,7 @@ final class MockContainer: SharedContainer {
     var manager = ContainerManager()
     
     init() {
-        manager.defaultScope = .cached
+        self.manager.defaultScope = .singleton
     }
 }
 

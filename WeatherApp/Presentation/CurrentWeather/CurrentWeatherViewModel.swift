@@ -36,27 +36,31 @@ final class CurrentWeatherViewModel: NSObject, ObservableObject {
     @Published var status: String?
     @Published var errorText: String? = nil
     
-    @Published var selectedLocation: Location? = nil {
-        didSet {
-            guard let selectedLocation else {
-                locationManager.startUpdatingLocation()
-                return
-            }
-            
-            locationManager.stopUpdatingLocation()
-            Task {
-                await updateWeather(for: selectedLocation.coordinate)
-            }
+    func updateSelectedLocation(_ location: Location? = nil) async throws {
+        guard let location else {
+            locationManager.startUpdatingLocation()
+            return
         }
+        
+        locationManager.stopUpdatingLocation()
+        await updateWeather(for: location.coordinate)
     }
     
     private var timer: Timer?
 
+    func retry() async {
+        guard let coordinate = locationManager.location?.coordinate else {
+            errorText = "No location to fetch the data"
+            return
+        }
+        
+        await updateWeather(for: .init(latitude: coordinate.latitude, longitude: coordinate.longitude))
+    }
+    
     func onAppear() {
         timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] _ in
             self?.calculateSunPosition()
         }
-        isLoading = true
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.distanceFilter = 5000
@@ -79,15 +83,14 @@ final class CurrentWeatherViewModel: NSObject, ObservableObject {
     }
     
     @MainActor
-    private func updateWeather(for coordinate: Coordinate) {
+    private func updateWeather(for coordinate: Coordinate) async {
         isLoading = true
-        Task {
-            do {
-                errorText = nil
-                currentWeather = try await getCurrentWeatherUseCase.execute(coordinate: .init(latitude: coordinate.latitude, longitude: coordinate.longitude), units: units)
-            } catch {
-                errorText = error.localizedDescription
-            }
+        do {
+            errorText = nil
+            currentWeather = try await getCurrentWeatherUseCase.execute(coordinate: .init(latitude: coordinate.latitude, longitude: coordinate.longitude), units: units)
+            isLoading = false
+        } catch {
+            errorText = error.localizedDescription
             isLoading = false
         }
     }

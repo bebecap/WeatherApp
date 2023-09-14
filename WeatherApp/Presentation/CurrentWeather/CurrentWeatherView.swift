@@ -11,22 +11,43 @@ struct CurrentWeatherView: View {
     @StateObject var viewModel: CurrentWeatherViewModel
     @Binding var selectedLocation: Location?
 
+    var isUnitTesting: Bool {
+        ProcessInfo.processInfo.environment["IS_UNIT_TESTING"] == "true"
+    }
+    
     var body: some View {
         ZStack {
-            WeatherBackgroundView(sunPosition: $viewModel.sunPosition, cloudsOpacity: $viewModel.cloudsOpacity)
-            DegreeView(
-                degrees: $viewModel.temperature,
-                location: $viewModel.city,
-                minTemparature: $viewModel.minTemperature,
-                maxTemperature: $viewModel.maxTemperature,
-                status: $viewModel.status
-            )
-            .padding()
+            if let errorText = viewModel.errorText {
+                VStack {
+                    Text(errorText)
+                    Button {
+                        Task {
+                            await viewModel.retry()
+                        }
+                    } label: {
+                        Text("Retry request")
+                    }
+                }
+            } else {
+                WeatherBackgroundView(sunPosition: $viewModel.sunPosition, cloudsOpacity: $viewModel.cloudsOpacity)
+                DegreeView(
+                    degrees: $viewModel.temperature,
+                    location: $viewModel.city,
+                    minTemparature: $viewModel.minTemperature,
+                    maxTemperature: $viewModel.maxTemperature,
+                    status: $viewModel.status
+                )
+                .padding()
+            }
         }
         .onChange(of: selectedLocation) { newValue in
-            viewModel.selectedLocation = newValue
+            Task {
+                try await viewModel.updateSelectedLocation(newValue)
+            }
         }
         .onAppear {
+            guard !isUnitTesting else { return }
+
             viewModel.onAppear()
         }
     }
