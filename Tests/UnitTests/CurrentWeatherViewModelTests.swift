@@ -78,4 +78,90 @@ final class CurrentWeatherViewModelTests: WeatherTestCase {
         XCTAssertEqual(getCurrentWeatherUseCase.executeCallCount, 1)
         XCTAssertNotNil(viewModel.errorText)
     }
+    
+    func testLocationManagerDidUpdateLocations() {
+        let expectation = XCTestExpectation(description: "Waiting for response")
+        locationManager.location = .init(latitude: 0, longitude: 0)
+
+        getCurrentWeatherUseCase.executeHandler = { _, _ in
+            defer {
+                expectation.fulfill()
+            }
+            return .TestData.default
+        }
+        
+        viewModel.locationManager(.init(), didUpdateLocations: [])
+        
+        wait(for: [expectation])
+        
+        XCTAssertEqual(locationManager.startUpdatingLocationCallCount, 0)
+        XCTAssertEqual(locationManager.stopUpdatingLocationCallCount, 0)
+        XCTAssertEqual(getCurrentWeatherUseCase.executeCallCount, 1)
+        XCTAssertNil(viewModel.errorText)
+    }
+    
+    func testLocationManagerDidUpdateLocations_whenNoLocation() {
+        locationManager.location = nil
+    
+        viewModel.locationManager(.init(), didUpdateLocations: [])
+        
+        XCTAssertEqual(locationManager.startUpdatingLocationCallCount, 0)
+        XCTAssertEqual(locationManager.stopUpdatingLocationCallCount, 0)
+        XCTAssertEqual(getCurrentWeatherUseCase.executeCallCount, 0)
+        XCTAssertNil(viewModel.errorText)
+    }
+    
+    func testRetry_whenSuccess() async {
+        let expectation = XCTestExpectation(description: "Waiting for response")
+        locationManager.location = .init(latitude: 0, longitude: 0)
+
+        getCurrentWeatherUseCase.executeHandler = { _, _ in
+            defer {
+                expectation.fulfill()
+            }
+            return .TestData.default
+        }
+        
+        await viewModel.retry()
+        
+        await fulfillment(of: [expectation])
+        
+        XCTAssertEqual(locationManager.startUpdatingLocationCallCount, 0)
+        XCTAssertEqual(locationManager.stopUpdatingLocationCallCount, 0)
+        XCTAssertEqual(getCurrentWeatherUseCase.executeCallCount, 1)
+        XCTAssertNil(viewModel.errorText)
+    }
+    
+    func testRetry_whenNoLocation() async {
+        let expectation = XCTestExpectation(description: "Waiting for response")
+        locationManager.location = nil
+        
+        await viewModel.retry()
+        
+        XCTAssertEqual(locationManager.startUpdatingLocationCallCount, 0)
+        XCTAssertEqual(locationManager.stopUpdatingLocationCallCount, 0)
+        XCTAssertEqual(getCurrentWeatherUseCase.executeCallCount, 0)
+        XCTAssertEqual(viewModel.errorText, "No location to fetch the data")
+    }
+    
+    func testRetry_whenFailed() async {
+        let expectation = XCTestExpectation(description: "Waiting for response")
+        locationManager.location = .init(latitude: 0, longitude: 0)
+
+        getCurrentWeatherUseCase.executeHandler = { _, _ in
+            defer {
+                expectation.fulfill()
+            }
+            throw RequestError.unauthorized
+        }
+        
+        await viewModel.retry()
+        
+        await fulfillment(of: [expectation])
+        
+        XCTAssertEqual(locationManager.startUpdatingLocationCallCount, 0)
+        XCTAssertEqual(locationManager.stopUpdatingLocationCallCount, 0)
+        XCTAssertEqual(getCurrentWeatherUseCase.executeCallCount, 1)
+        XCTAssertEqual(RequestError.unauthorized.localizedDescription, viewModel.errorText)
+    }
 }

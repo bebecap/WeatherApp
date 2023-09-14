@@ -48,21 +48,19 @@ final class CurrentWeatherViewModel: NSObject, ObservableObject {
     
     private var timer: Timer?
 
-    func retry() {
+    func retry() async {
         guard let coordinate = locationManager.location?.coordinate else {
             errorText = "No location to fetch the data"
             return
         }
-        Task {
-            await updateWeather(for: .init(latitude: coordinate.latitude, longitude: coordinate.longitude))
-        }
+        
+        await updateWeather(for: .init(latitude: coordinate.latitude, longitude: coordinate.longitude))
     }
     
     func onAppear() {
         timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] _ in
             self?.calculateSunPosition()
         }
-        isLoading = true
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.distanceFilter = 5000
@@ -90,10 +88,11 @@ final class CurrentWeatherViewModel: NSObject, ObservableObject {
         do {
             errorText = nil
             currentWeather = try await getCurrentWeatherUseCase.execute(coordinate: .init(latitude: coordinate.latitude, longitude: coordinate.longitude), units: units)
+            isLoading = false
         } catch {
             errorText = error.localizedDescription
+            isLoading = false
         }
-        isLoading = false
     }
 }
 
